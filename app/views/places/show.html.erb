@@ -1,7 +1,7 @@
 <h1><%= @place["name"] %></h1>
 
 <h2>My Entries</h2>
-<% for entry in @entries %>
+<% @place.entries.where(user_id: current_user.id).each do |entry| %>
   <h3><%= entry["title"] %></h3>
   <h4><%= entry["occurred_on"] %></h4>
   <p><%= entry["description"] %></p>
