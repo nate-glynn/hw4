@@ -26,9 +26,14 @@ class EntriesController < ApplicationController
       title: params["title"],
       description: params["description"],
       occurred_on: params["occurred_on"],
-      place_id: params["place_id"]
+      place_id: params["place_id"], 
     )
     
+    if params["uploaded_image"].present?
+      @entry.uploaded_image.attach(params["uploaded_image"])
+    end
+
+
     if @entry.save
       redirect_to "/places/#{@entry.place_id}"
     else
