@@ -22,4 +22,8 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: travel_journal_final_production
+  username: travel_journal_final
+  password: <%= ENV["TAVEL_JOURNAL_FINAL_DATABASE_PASSWORD"] %>
+
